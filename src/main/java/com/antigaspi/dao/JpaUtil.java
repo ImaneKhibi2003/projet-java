@@ -33,7 +33,7 @@ import java.util.function.Supplier;
  */
 public final class JpaUtil {
 
-    private static final String PERSISTENCE_UNIT = "antigaspiPU";
+    private static final String PERSISTENCE_UNIT = System.getProperty("antigaspi.pu", "antigaspiPU");
     private static final ThreadLocal<EntityManager> CURRENT = new ThreadLocal<>();
     private static volatile EntityManagerFactory emf;
 
