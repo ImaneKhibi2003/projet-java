@@ -16,10 +16,10 @@
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
-            <!-- H2 en mémoire (dev). schema.sql puis data.sql sont exécutés par H2 au démarrage -->
+            <!-- H2 en mémoire (dev). schema.sql et data.sql sont exécutés une seule fois par JpaUtil -->
             <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:h2:mem:antigaspi;MODE=MySQL;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM 'classpath:schema.sql'\;RUNSCRIPT FROM 'classpath:data.sql'"/>
+                      value="jdbc:h2:mem:antigaspi;MODE=MySQL;DB_CLOSE_DELAY=-1"/>
             <property name="jakarta.persistence.jdbc.user" value="sa"/>
             <property name="jakarta.persistence.jdbc.password" value=""/>
 
@@ -30,7 +30,7 @@
             <property name="hibernate.physical_naming_strategy"
                       value="org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy"/>
 
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
