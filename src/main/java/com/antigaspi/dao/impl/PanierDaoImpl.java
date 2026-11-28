@@ -65,6 +65,15 @@ public class PanierDaoImpl extends AbstractJpaDao<Panier> implements PanierDao {
 
     @Override
     public Optional<Panier> findByIdForUpdate(Long id) {
-        return ecrire(em -> Optional.ofNullable(em.find(Panier.class, id, LockModeType.PESSIMISTIC_WRITE)));
+        return ecrire(em -> {
+            Panier panier = em.find(Panier.class, id);
+            if (panier == null) {
+                return Optional.<Panier>empty();
+            }
+            // refresh + verrou : on relit la ligne verrouillée, donc l'état est toujours à jour,
+            // même si le panier avait déjà été chargé plus tôt dans la transaction
+            em.refresh(panier, LockModeType.PESSIMISTIC_WRITE);
+            return Optional.of(panier);
+        });
     }
 }

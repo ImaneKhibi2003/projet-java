@@ -1,10 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%-- Page d'accueil provisoire --%>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>Anti-gaspillage</title>
+    <meta charset="UTF-8">
+    <title>Anti-gaspillage alimentaire</title>
 </head>
-<body>
-<h1>Anti-gaspillage : ça marche !</h1>
+<body style="font-family:sans-serif;max-width:720px;margin:20px auto;padding:0 16px;">
+<jsp:include page="/WEB-INF/views/layout/nav.jsp"/>
+<h1>Anti-gaspillage alimentaire</h1>
+<jsp:include page="/WEB-INF/views/layout/messages.jsp"/>
+<p>Des commerces de votre ville vendent leurs invendus à prix réduit. Réservez un panier et récupérez-le avant la fermeture.</p>
+<p><a href="${pageContext.request.contextPath}/paniers">Voir les paniers disponibles</a></p>
 </body>
 </html>
