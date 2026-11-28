@@ -25,18 +25,13 @@ public final class AccesUtil {
         return null;
     }
 
-    /**
-     * Page d'arrivée après connexion.
-     * TODO (A4.9) : ADMIN -> "/admin/dashboard" quand cette page existera.
-     */
+    /** Page d'arrivée après connexion. */
     public static String accueil(Role role) {
-        if (role == Role.CLIENT) {
-            return "/paniers";
-        }
-        if (role == Role.COMMERCANT) {
-            return "/commercant/dashboard";
-        }
-        return "/";
+        return switch (role) {
+            case CLIENT -> "/paniers";
+            case COMMERCANT -> "/commercant/dashboard";
+            case ADMIN -> "/admin/dashboard";
+        };
     }
 
     private static boolean correspond(String chemin, String prefixe) {
