@@ -27,12 +27,15 @@ public final class AccesUtil {
 
     /**
      * Page d'arrivée après connexion.
-     * TODO (A4.6, A4.9) : COMMERCANT -> "/commercant/dashboard", ADMIN -> "/admin/dashboard"
-     * quand ces pages existeront. D'ici là, ils arrivent sur la page d'accueil provisoire.
+     * TODO (A4.6, A4.9) : COMMERCANT -> "/commercant/dashboard" et ADMIN -> "/admin/dashboard"
+     * quand ces pages existeront.
      */
     public static String accueil(Role role) {
         if (role == Role.CLIENT) {
             return "/paniers";
+        }
+        if (role == Role.COMMERCANT) {
+            return "/commercant/retrait";
         }
         return "/";
     }
